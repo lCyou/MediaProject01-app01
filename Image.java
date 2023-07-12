@@ -7,10 +7,10 @@ public class Image {
 	public String name;
 	public GImage input;
 	public double features[] = new double[8];
-	public int top;
-	public int bottom;
-	public int left;
-	public int right;
+	private int top;
+	private int bottom;
+	private int left;
+	private int right;
 
 	public Image(String name, GImage input) {
 		this.name = name;
@@ -72,13 +72,13 @@ public class Image {
 			}
 		}
 
-		return Math.floor((double) sumBlack / (double) ((bottom - top + 1) * (right - left + 1)) * 1000) / 1000;
+		return (double) sumBlack / (double) ((bottom - top + 1) * (right - left + 1)) ;
 
 	}
 
 	private double calcRatio(GImage input, int width, int height) {
 
-		return Math.floor((double) (bottom - top + 1) / (double) (right - left + 1) * 1000) / 1000;
+		return (double) (bottom - top + 1) / (double) (right - left + 1);
 
 	}
 
@@ -98,7 +98,7 @@ public class Image {
 				}
 			}
 		}
-		return Math.floor((double) sum / (double) (bottom - top + 1) * 1000) / 1000;
+		return (double) sum / (double) (bottom - top + 1);
 	}
 
 	private double calcVertical(GImage input, int width, int height) {
@@ -119,7 +119,7 @@ public class Image {
 				}
 			}
 		}
-		return Math.floor((double) sum / (double) (right - left + 1) * 1000) / 1000;
+		return (double) sum / (double) (right - left + 1);
 	}
 
 	private double calcHDevi(GImage input, int width, int height, double ave) {
@@ -140,7 +140,7 @@ public class Image {
 			}
 			sum += Math.pow(n - ave, 2);
 		}
-		return Math.floor(Math.sqrt((double) sum / (double) (bottom - top + 1)) * 1000) / 1000;
+		return Math.sqrt((double) sum / (double) (bottom - top + 1));
 	}
 
 	private double calcVDevi(GImage input, int width, int height, double ave) {
@@ -163,7 +163,7 @@ public class Image {
 			}
 			sum += Math.pow(n - ave, 2);
 		}
-		return Math.floor(Math.sqrt((double) sum / (double) (right - left + 1)) * 1000) / 1000;
+		return Math.sqrt((double) sum / (double) (right - left + 1));
 	}
 
 	private double calcCenterX(GImage input) {
